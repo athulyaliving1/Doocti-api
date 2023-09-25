@@ -58,7 +58,7 @@ const PORT = process.env.PORT || 4050;
 
 hcdbPool.getConnection((err, connection) => {
   if (err) {
-    console.error("Error connecting to database 1:", err);
+    console.error("Error connecting to Homecare database :", err);
     return;
   }
   console.log("Connected to HomeCare Database");
@@ -67,7 +67,7 @@ hcdbPool.getConnection((err, connection) => {
 
 aalPool.getConnection((err, connection) => {
   if (err) {
-    console.error("Error connecting to database 2:", err);
+    console.error("Error connecting to AAL database :", err);
     return;
   }
   console.log("Connected to  AAL Database");
