@@ -8,7 +8,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const routes = require("./routes/allroutes");
 
-const hcdbConfig = require("./db/hcconnnection");
+const hcdbConfig = require("./db/hcconnection");
 const aalConfig = require("./db/aalconnection");
 
 const hcdbPool = hcdbConfig.mysql_pool;

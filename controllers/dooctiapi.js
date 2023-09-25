@@ -1,4 +1,4 @@
-const hcdb = require("../db/hcconnnection").mysql_pool;
+const hcdb = require("../db/hcconnection").mysql_pool;
 const aaldb = require("../db/aalconnection").mysql_pool;
 
 const mobileNumberSearch = (req, res) => {
