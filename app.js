@@ -46,7 +46,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-const PORT = process.env.PORT || 4050;
+const PORT = 4050;
 
 
 hcdbPool.getConnection((err, connection) => {
