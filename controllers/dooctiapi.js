@@ -8,6 +8,7 @@ const mobileNumberSearch = (req, res) => {
 
   if (!mobilenumber) {
     res.status(400).json({
+      success: false,
       error: "Please enter a valid mobile number",
     });
   } else {
@@ -40,6 +41,7 @@ const mobileNumberSearch = (req, res) => {
     Promise.all([hcdbPromise, aaldbPromise])
       .then(([hcdbResults, aaldbResults]) => {
         const response = {
+          success: true,
           hcdbResults,
           aaldbResults,
         };
@@ -49,10 +51,14 @@ const mobileNumberSearch = (req, res) => {
       })
       .catch((error) => {
         console.error("Error:", error);
-        res.status(500).send("An error occurred");
+        res.status(500).json({
+          success: false,
+          error: "An error occurred",
+        });
       });
   }
 };
+
 
 const postApiData = (req, res) => {
   const {
@@ -82,6 +88,7 @@ const postApiData = (req, res) => {
 
   if (contact_number === "") {
     res.status(400).json({
+      success: false,
       error: "Contact number is required.",
     });
   } else {
@@ -127,6 +134,7 @@ const postApiData = (req, res) => {
         if (err) {
           console.error("Error inserting data into patients:", err);
           res.status(500).json({
+            success: false,
             error: "Internal server error.",
           });
         } else {
@@ -164,10 +172,12 @@ const postApiData = (req, res) => {
               if (err) {
                 console.error("Error inserting data into leads:", err);
                 res.status(500).json({
+                  success: false,
                   error: "Internal server error.",
                 });
               } else {
                 res.status(200).json({
+                  success: true,
                   message: "Data inserted successfully.",
                   patientId,
                   leadsResults,
@@ -206,6 +216,7 @@ const postAALApiData = (req, res) => {
 
   if (mobile_number === "") {
     res.status(400).json({
+      success: false,
       error: "Mobile number is required.",
     });
   } else {
@@ -252,6 +263,7 @@ const postAALApiData = (req, res) => {
         if (err) {
           console.error("Error inserting data into patients:", err);
           res.status(500).json({
+            success: false,
             error: "Internal server error.",
           });
         } else {
@@ -285,10 +297,12 @@ const postAALApiData = (req, res) => {
               if (err) {
                 console.error("Error inserting data into leads:", err);
                 res.status(500).json({
+                  success: false,
                   error: "Internal server error.",
                 });
               } else {
                 res.status(200).json({
+                  success: true,
                   message: "Data inserted successfully.",
                   patientId,
                   leadsResults,
